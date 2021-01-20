@@ -1,4 +1,5 @@
 import telebot
+from telebot import types
 import datetime
 
 bot = telebot.TeleBot("1515221232:AAGOTsYV2YXQTJ2YqsLPIoXZr-gJD2htyc4")
@@ -57,6 +58,25 @@ def text(msg):
 def text(msg):
     chatid = msg.chat.id
     bot.send_document(chatid, open('./undangan.pdf', 'rb'))
+
+# floating keyboard
+@bot.message_handler(commands=['hi'])
+def text(msg):
+    chatid = msg.chat.id
+    markup = types.ReplyKeyboardMarkup()
+    itemA = types.KeyboardButton('Baik')
+    itemB = types.KeyboardButton('Tidak Baik')
+    markup.row(itemA, itemB)
+    bot.send_message(chatid, 'halo pa kbr ?', reply_markup=markup)
+
+# inline keyboard
+@bot.message_handler(commands=['help'])
+def text(msg):
+    chatid = msg.chat.id
+    markup = types.InlineKeyboardMarkup()
+    itemA = types.InlineKeyboardButton('Hubungi Developer', url='telegram.me/ndawinata')
+    markup.row(itemA)
+    bot.send_message(chatid, 'Jika Bingung Silahkan Hubungi Developer !', reply_markup=markup)
 
 
 print('Bot is Running !')
