@@ -10,9 +10,9 @@ def start(msg):
     bot.reply_to(msg, f'Hello apa kabar {nama} !, terkirim pukul {date}')
 
 # kata yang match menggunakan regex
-@bot.message_handler(regexp='nawi')
-def text(msg):
-    bot.reply_to(msg, f'Ini adalah nama bot kami !')
+# @bot.message_handler(regexp='nawi')
+# def text(msg):
+#     bot.reply_to(msg, f'Ini adalah nama bot kami !')
 
 # mengenali teks 
 # @bot.message_handler(content_types=['text'])
